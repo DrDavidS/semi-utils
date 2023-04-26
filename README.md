@@ -7,6 +7,10 @@
 >
 > **这是一个用于给照片批量添加水印的工具。**
 
+## 开发文档
+
+**[Wiki](../../wiki)**
+
 ## 功能列表
 
 | 功能          | 描述                                                              | 可显示/隐藏             | 可定义位置              |
@@ -21,7 +25,7 @@
 ## 效果展示
 
 > **布局：normal_with_right**
-> 
+>
 > logo 居右，下方文字内容可自定义
 
 ![](images/1-right.jpg)
@@ -29,7 +33,7 @@
 ---
 
 > **布局：normal_with_right**
-> 
+>
 > logo 居右，添加外包围白框，下方文字内容可自定义
 
 ![](images/1-right-margin.jpg)
@@ -37,7 +41,7 @@
 ---
 
 > **布局：normal**
-> 
+>
 > logo 居左，下方文字内容可自定义
 
 ![](images/1-left.jpg)
@@ -45,15 +49,23 @@
 ---
 
 > **布局：square**
-> 
-> 布局：square" attr="正方形白色边框
+>
+> 正方形白色边框
 
 ![](images/1-square.jpg)
+
+---
+
+>布局：简洁
+>
+>下方一行用于描述参数的文字
+
+![](images/1-simple.jpeg)
 
 ## 使用方法
 
 > **简要步骤**
-> 
+>
 > ![](images/steps.png)
 
 ### Windows
@@ -67,7 +79,36 @@
 
 ### macOS/Linux
 
-- 下载源码后解压，比如解压到 `~/semi-utils`
+#### 使用 git
+
+- **安装需要的依赖（正式运行前执行一次即可）**
+
+  打开命令行/终端，输入：
+
+  ```shell
+  # 使用 git 将代码下载到本地，比如 ~/semi-utils，如果要下载到其他路径替换掉下面命令中的路径即可
+  git clone --depth 1 https://github.com/leslievan/semi-utils.git ~/semi-utils
+  cd ~/semi-utils
+  chmod +x install.sh
+  ./install.sh
+  ```
+
+- 将需要添加水印的图片复制到 `~/semi-utils/input` 文件夹中
+
+- 打开命令行/终端，输入
+
+   ```shell
+   cd ~/semi-utils
+   python ~/semi-utils/main.py
+   ```
+
+- 按照提示输入 `y或回车` 开始执行
+
+- 处理好的图片存放在 `~/semi-utils/output` 中
+
+#### 手动下载
+
+- 下载[源码](https://github.com/leslievan/semi-utils/archive/refs/tags/v1.4.16.zip)后解压，比如解压到 `~/semi-utils`
 
 - **安装需要的依赖（正式运行前执行一次即可）**
 
@@ -75,7 +116,8 @@
 
    ```shell
    cd ~/semi-utils
-   pip install -r requirements.txt
+   chmod +x install.sh
+   ./install.sh
    ```
 
 - 将需要添加水印的图片复制到 `~/semi-utils/input` 文件夹中
@@ -108,6 +150,50 @@
 | `logo.makes.item.id`   | 厂商标识，由 Exif 信息提供                   |
 | `logo.makes.item.path` | 厂商 logo 路径，可自定义                    |
 
+## 可能出现的问题
+
+### 运行 `pip install` 时提示 `command not found`
+
+**可能是因为没有安装 Python3**，可以通过以下几种方式安装 Python3。
+
+1. 使用 Homebrew 安装。
+
+   Homebrew 是 Mac 上的软件包管理器，可以轻松地安装许多应用程序和服务。
+
+   - 如果你已经安装了 `brew`，打开终端并输入以下命令来安装 Python3：
+
+     ```shell
+     brew install python3
+     ```
+
+     如果这条命令提示 `command not found`，代表你没有安装 `brew`，跳转下一步。
+
+    - 如果你没有安装 `brew`，打开终端并输入以下命令来安装 Homebrew：
+
+      ```shell
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      ```
+
+      然后输入以下命令来安装 Python3：
+
+      ```shell
+      brew install python3
+      ```
+
+2. 使用 dmg 包安装
+
+   你可以从 [Python 官网](https://www.python.org/downloads/macos/) 下载 Python3 的安装包，选择 Stable Release 下的任一版本即可，推荐 `3.10.11`，然后打开下载好的安装包按照提示安装即可。
+
+**验证安装**
+
+安装完成后，可以使用以下命令来验证 Python3 是否正确安装：
+
+```shell
+python3 --version
+```
+
+此命令将返回已安装的 Python3 版本号。
+
 ## 关于
 
 鸣谢：[JetBrains](https://jb.gg/OpenSourceSupport) 为本项目提供的开源许可
@@ -115,3 +201,5 @@
 ## 许可证
 
 本项目的发布基于 [Apache License 2.0](LICENSE).
+
+本项目引用了 [exiftool](https://exiftool.org/)，其发布基于 [GPL v1 + Artistic License 2.0](https://exiftool.org/#license)。

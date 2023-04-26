@@ -1,9 +1,18 @@
 base:
+  alternative_bold_font: ./fonts/Roboto-Medium.ttf
+  alternative_font: ./fonts/Roboto-Regular.ttf
   bold_font: ./fonts/AlibabaPuHuiTi-2-85-Bold.otf
+  bold_font_size: 1
   font: ./fonts/AlibabaPuHuiTi-2-45-Light.otf
+  font_size: 1
   input_dir: ./input
   output_dir: ./output
   quality: 100
+global:
+  padding_with_original_ratio:
+    enable: false
+  shadow:
+    enable: false
 layout:
   elements:
     left_bottom:
@@ -14,7 +23,7 @@ layout:
       name: LensModel
     right_bottom:
       is_bold: false
-      name: Date
+      name: Datetime
       value: Photo by NONE
     right_top:
       is_bold: true
@@ -35,6 +44,9 @@ logo:
     hasselblad:
       id: HASSELBLAD
       path: ./logos/hasselblad.png
+    huawei:
+      id: HUAWEI
+      path: ./logos/xmage.jpg
     leica:
       id: leica
       path: ./logos/leica_logo.png
@@ -56,6 +68,7 @@ logo:
     sony:
       id: SONY
       path: ./logos/sony.png
+  position: right
 param:
   focal_length:
     use_equivalent_focal_length: false
